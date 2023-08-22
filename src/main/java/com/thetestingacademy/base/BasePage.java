@@ -4,6 +4,7 @@ import com.thetestingacademy.driver.DriverManagerTL;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -33,6 +34,11 @@ public class BasePage {
 
     protected WebElement getElement(By by){
         return DriverManagerTL.getDriver().findElement(by);
+    }
+
+    protected void selectDropdownByText(By by, String text){
+        Select select = new Select(DriverManagerTL.getDriver().findElement(by));
+        select.selectByVisibleText(text);
     }
 
     protected WebElement presenceOfElement(final By by){

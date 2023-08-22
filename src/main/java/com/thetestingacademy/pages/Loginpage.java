@@ -4,6 +4,9 @@ import com.thetestingacademy.base.BasePage;
 import com.thetestingacademy.driver.DriverManagerTL;
 import com.thetestingacademy.utils.PropReader;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class Loginpage extends BasePage {
 
@@ -12,7 +15,10 @@ public class Loginpage extends BasePage {
     }
 
     // Page Locators
-    private By username = By.id("login-username");
+    @FindBy(id="login-username")
+    private WebElement username;
+    //private By username = By.id("login-username");
+
     private By password =  By.id("login-password");
     private By signButton = By.id("js-login-btn");
 
@@ -22,6 +28,7 @@ public class Loginpage extends BasePage {
 
     // Page Actions
     public Loginpage loginToVWO(boolean value) throws Exception {
+        PageFactory.initElements(DriverManagerTL.getDriver(),this);
         if(!value){
             enterInput(username, PropReader.readKey("invalid_username"));
             enterInput(password, PropReader.readKey("invalid_password"));

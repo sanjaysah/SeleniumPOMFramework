@@ -32,7 +32,8 @@ public class LoginTest extends TestBase {
         DriverManagerTL.getDriver().get(PropReader.readKey("url"));
         DashboardPage dashboard = new Loginpage().loginToVWO(true).afterLogin();
         String expected = dashboard.loggedInUsername();
-        Assertions.assertThat(expected).isNotBlank().isNotNull().contains(PropReader.readKey("expected_username"));
+        Assertions.assertThat(expected).isNotBlank().isNotNull()
+                .contains(PropReader.readKey("expected_username"));
 
     }
 
